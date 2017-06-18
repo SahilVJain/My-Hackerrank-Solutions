@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        
+        Scanner sc = new Scanner(System.in);
+        
+        int N = sc.nextInt();
+        String s;
+        
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        
+        for(int i=0; i<N; i++)
+        {
+            s=sc.next();
+            //System.out.println(s);
+            
+            if(map.containsKey(s))
+            {
+                int count = map.get(s);
+                count++;
+                map.put(s,count);
+            }
+            else
+            {
+                map.put(s,1);
+            }
+        }
+        
+        int Q = sc.nextInt();
+        //System.out.println(Q);
+        
+        String check;
+        
+        for(int i=0; i<Q; i++)
+        {
+            check = sc.next();
+            if(map.containsKey(check))
+            {
+                System.out.println(map.get(check));
+            }
+            else
+            {
+                System.out.println(0);
+            }
+        }
+    }
+}
