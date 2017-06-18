@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner (System.in);
+        
+        int n = sc.nextInt();
+        int d = sc.nextInt();
+        int arrayIndex = d%n;
+        int ResultIndex = 0;
+        
+        int array[]=new int[n];
+        int result[]=new int[n];
+        
+        for(int i = 0; i<n; i++)
+        {
+            array[i] = sc.nextInt();
+        } 
+        
+        while(ResultIndex < n)
+        {
+            result[ResultIndex] = array[arrayIndex];
+            arrayIndex=(arrayIndex+1)%n;
+            System.out.print(result[ResultIndex++]+" ");
+        }
+        
+    }
+}
