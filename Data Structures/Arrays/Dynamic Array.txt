@@ -1,0 +1,105 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int arr[] = new int[n];
+        for(int arr_i=0; arr_i < n; arr_i++){
+            arr[arr_i] = in.nextInt();
+        }
+        
+        for(int i=n-1; i>=0; i--)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int arr[][] = new int[6][6];
+
+        for(int i=0; i < 6; i++){
+            for(int j=0; j < 6; j++){
+                arr[i][j] = in.nextInt();
+            }
+        }
+        int finalsum=Integer.MIN_VALUE;
+        int sum = 0;
+        for(int i=0;i<4;i++)
+        {
+            for(int j=0;j<4;j++)
+            {
+                sum=arr[i][j]+arr[i][j+1]+arr[i][j+2]+arr[i+1][j+1]+arr[i+2][j]+arr[i+2][j+1]+arr[i+2][j+2];
+                finalsum = finalsum < sum ? sum : finalsum;
+                //sum=0;
+            }
+        }
+        
+        System.out.println(finalsum);
+    }
+}
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        
+        int N = sc.nextInt();
+        int Q = sc.nextInt();
+        int n,x,y, LastAnswer=0;
+        
+        HashMap<Integer,LinkedList<Integer>> seqList=new HashMap<Integer,LinkedList<Integer>>();
+        
+        for(int i=1; i<N; i++)
+        {
+            seqList.put(i,new LinkedList<Integer>());
+        }
+        
+        for(int i=0;i<Q;i++)
+        {
+            n=sc.nextInt();
+            x=sc.nextInt();
+            y=sc.nextInt();
+            
+            if(n==1)
+            {
+                int index = (x^LastAnswer)%N;
+                LinkedList<Integer> seq = seqList.get(index);
+                if(seq==null)
+                {
+                    seq=new LinkedList<Integer>();
+                }
+                seq.add(y);
+                seqList.put(index,seq);
+            }
+            else
+                if(n==2)
+                {
+                    int index = (x^LastAnswer)%N;
+                    LinkedList<Integer> seq = seqList.get(index);
+                    LastAnswer = seq.get(y%seq.size());
+                    System.out.println(LastAnswer);
+                }
+        }
+    }
+}
